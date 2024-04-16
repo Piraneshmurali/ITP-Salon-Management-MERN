@@ -1,7 +1,7 @@
 # OLEX_ITP
 
 
-1.Sales And Inventory Management - Piranes.M 
+1. Piranes.M - Sales And Inventory Management
 The Sales And Inventory Management segment involves overseeing 
 the addition, modification, and deletion of beauty products. This 
 responsibility encompasses adjusting prices, and handling stock 
@@ -12,7 +12,7 @@ conveniently, filtering selections according to their specific
 category. In addition to these features, users can provide reviews for 
 every product.
 
-2.Appointment And Branch Management - Mithuran.T 
+2. Mithuran.T - Appointment And Branch Management 
 In the Appointment And Branch Management domain, registered 
 customers enjoy the flexibility of scheduling appointments for a 
 variety of services, including haircuts, massages, and facials. 
@@ -25,7 +25,7 @@ of customers in each branch. This feature empowers customers to
 make well-informed decisions by selecting a branch with a lower 
 customer count for their preferred services.
 
-3.Billing And Payment Management - Kiritharan.S
+3. Kiritharan.S-Billing And Payment Management 
 Within the Billing And Payment Management system, we are 
 utilizing both cash on delivery and online payments through the 
 integration of a payment gateway. This allows for transactions to be 
@@ -34,7 +34,7 @@ choose their preferred payment method. Receipts continue to play a
 crucial role, serving as proof of identity for customers who engage 
 in online bookings.
 
-4.Reminder, Notification, and User Management - Achchjuthan.S
+4.Achchjuthan.S - Reminder, Notification, and User Management 
 In the Reminder And Notification module, Users receive targeted 
 monthly reminders, prompting them to schedule their regular salon 
 activities, ensuring they never miss a necessary service.
@@ -50,7 +50,7 @@ can personalize their profiles by adding profile photos and details,
 contributing to a more personalized and user-friendly experience 
 within the salon management system.
 
-5.Feedback, Review And Report Management - Narmatha.L 
+5. Narmatha.L - Feedback, Review And Report Management 
 In the Feedback and Review Management system, Customers can 
 provide valuable insights into their experiences, aiding in the 
 continuous improvement of salon operations. salon administrators 
@@ -60,7 +60,7 @@ the generation of monthly reports covering various aspects,
 including customer feedback, sales performance, haircuts, facials, 
 massages, and inventory.
 
-6.Employee Management - Jathudshan.R 
+6. Jathudshan.R - Employee Management 
 In the Employee Management functionality, This includes the 
 innovative feature where administrators can not only determine but 
 also dynamically adjust salaries based on various factors. Admins 
@@ -71,7 +71,7 @@ providing details and reasons for their absence. If the requested
 leave exceeds the predetermined limit, the system automatically 
 routes the request to the admin for approval
 
-7.Package Management - Thivakar.G
+7. Thivakar.G - Package Management 
 package management into  salon system would allow you to create and promote special offers that combine popular services. 
 Imagine pre-designed packages bundling haircuts with coloring or facials with massages, all at discounted prices.  
 This would incentivize customers to book more services at once, boosting  sales.
