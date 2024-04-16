@@ -34,7 +34,7 @@ choose their preferred payment method. Receipts continue to play a
 crucial role, serving as proof of identity for customers who engage 
 in online bookings.
 
-4.Achchjuthan.S - Reminder, Notification, and User Management 
+4. Achchjuthan.S - Reminder, Notification, and User Management 
 In the Reminder And Notification module, Users receive targeted 
 monthly reminders, prompting them to schedule their regular salon 
 activities, ensuring they never miss a necessary service.
