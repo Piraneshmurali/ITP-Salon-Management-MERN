@@ -70,3 +70,11 @@ mechanism. Employees can request leave through a structured form,
 providing details and reasons for their absence. If the requested 
 leave exceeds the predetermined limit, the system automatically 
 routes the request to the admin for approval
+
+7.Package Management - Thivakar.G
+package management into  salon system would allow you to create and promote special offers that combine popular services. 
+Imagine pre-designed packages bundling haircuts with coloring or facials with massages, all at discounted prices.  
+This would incentivize customers to book more services at once, boosting  sales.
+Package management would also streamline the booking and billing process for both staff and clients. 
+Staff wouldn't need to create individual bookings for each included service, 
+and clients would have a clear understanding of the services included and the total price.
