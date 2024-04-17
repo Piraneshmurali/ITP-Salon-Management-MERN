@@ -25,7 +25,7 @@ of customers in each branch. This feature empowers customers to
 make well-informed decisions by selecting a branch with a lower 
 customer count for their preferred services.
 
-3. Kiritharan.S-Billing And Payment Management 
+3. Kiritharan.S - Billing And Payment Management 
 Within the Billing And Payment Management system, we are 
 utilizing both cash on delivery and online payments through the 
 integration of a payment gateway. This allows for transactions to be 
