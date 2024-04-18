@@ -131,7 +131,7 @@ export default function AddOrder() {
               <option value="Not Recieved">Not Recieved</option>
             </select>
           </div>
-
+          
           <button type="submit" className="addOrder-button">
             Add order
           </button>
