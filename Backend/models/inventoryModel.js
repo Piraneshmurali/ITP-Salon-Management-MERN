@@ -23,8 +23,9 @@ const inventorySchema = mongoose.Schema(
             required: true
         },
         uquantity: {
-            type: Number,
-            required: true
+                type:String,
+                required: true
+            
         },
         totalPrice: {
             type: String,
