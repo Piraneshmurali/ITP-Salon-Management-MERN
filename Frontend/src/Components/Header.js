@@ -18,7 +18,7 @@ export default function Header() {
         <img src={logo} className="logo-image" />
       </div>
       <div className="header-searchbar">
-        <div className="search-bar">
+        <div className="searchBar">
           <input type="text" placeholder="Search" className="search-input" />
           <button className="search-button">
             <IoSearch className="search-icon" />

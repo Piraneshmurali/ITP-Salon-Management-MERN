@@ -29,7 +29,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="navbar-login">
-        <h1 className="login-button">
+        <h1 className="loginButton">
           <Link to="/Hero" className="login-link">Login</Link>
         </h1>
       </div>
