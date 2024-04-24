@@ -7,17 +7,21 @@ import axios from "axios";
 import logo from "./images/logo.png";
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
+import { FaSearch } from "react-icons/fa";
 
 export default function InventoryMnagement() {
   const navigate = useNavigate();
   const [inventory, setInventory] = useState([]);
-  const [sortCriteria, setSortCriteria] = useState(null);
-  const [sortOrder, setSortOrder] = useState("asc");
+  const [searchQuery, setSearchQuery] = useState(""); // State to manage search query
+  const [originalInventory, setOriginalInventory] = useState([]); // Store original inventory data
 
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/Product/products")
-      .then((items) => setInventory(items.data))
+      .then((items) => {
+        setInventory(items.data);
+        setOriginalInventory(items.data); // Set original inventory data
+      })
       .catch((err) => console.log(err));
   }, []);
 
@@ -41,27 +45,31 @@ export default function InventoryMnagement() {
     navigate("/AddProduct");
   };
 
-  const handleSort = (criteria) => {
-    if (sortCriteria === criteria) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortCriteria(criteria);
-      setSortOrder("asc");
-    }
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+    filterInventory(event.target.value);
   };
 
-  const sortedInventory = [...inventory].sort((a, b) => {
-    if (sortCriteria === "type") {
-      return sortOrder === "asc"
-        ? a.type.localeCompare(b.type)
-        : b.type.localeCompare(a.type);
-    } else if (sortCriteria === "price") {
-      return sortOrder === "asc"
-        ? a.totalPrice - b.totalPrice
-        : b.totalPrice - a.totalPrice;
+  const filterInventory = (query) => {
+    if (query === "") {
+      // If search query is empty, display original inventory
+      setInventory(originalInventory);
+    } else {
+      const filtered = originalInventory.filter((item) =>
+        Object.keys(item).some(
+          (key) =>
+          key !== "rquantity" &&
+            item[key] &&
+            item[key]
+              .toString()
+              .toLowerCase()
+              .startsWith(query.toLowerCase())
+        )
+      );
+      setInventory(filtered);
     }
-    return 0;
-  });
+  };
+  
 
   const downloadPDF = async () => {
     try {
@@ -105,7 +113,7 @@ export default function InventoryMnagement() {
         { header: "Category", dataKey: "category" },
         { header: "Date", dataKey: "date" },
         { header: "Remaining qty", dataKey: "remaning" },
-        { header: "Used qty", dataKey: "used" },
+        // { header: "Used qty", dataKey: "used" },
         { header: "Price", dataKey: "price" },
       ];
 
@@ -150,16 +158,14 @@ export default function InventoryMnagement() {
           </div>
         </div>
         <div className="inventoryManagement-body">
-          <div className="sort-button">
-            <button className="sort-by-type" onClick={() => handleSort("type")}>
-              Sort by type
-            </button>
-            <button
-              className="sort-by-price"
-              onClick={() => handleSort("price")}
-            >
-              Sort by price
-            </button>
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Search Products Through Prices, Category And Names"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />
+             {/* <FaSearch className="search-icon" /> */}
           </div>
           <table>
             <thead>
@@ -170,27 +176,42 @@ export default function InventoryMnagement() {
                 <th>Category</th>
                 <th>Date</th>
                 <th>Remaining qty</th>
-                <th>Used qty</th>
+                <th>Image</th>
                 <th>Total Price</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {sortedInventory.map((inventory, index) => {
+              {inventory.map((inventory, index) => {
                 return (
-                  <tr>
-                    <td key={inventory.id}>{index + 1}</td>
+                  <tr key={index}>
+                    <td>{index + 1}</td>
                     <td>{inventory.name}</td>
                     <td>{inventory.type}</td>
                     <td>{inventory.category}</td>
                     <td>{inventory.date}</td>
                     <td className="inventory-cell">
-                      <span className="inventory-quantity" style={{ color: inventory.rquantity < 10 ? 'red' : 'inherit' }}>
-                       {inventory.rquantity}
+                      <span
+                        className="inventory-quantity"
+                        style={{
+                          color:
+                            inventory.rquantity < 10 ? "red" : "inherit",
+                        }}
+                      >
+                        {inventory.rquantity}
                       </span>
-                      {inventory.rquantity < 10 && <span className="low-stock-message">Low Stock</span>}
+                      {inventory.rquantity < 10 && (
+                        <span className="low-stock-message">Low Stock</span>
+                      )}
                     </td>
-                    <td>{inventory.uquantity}</td>
+                    <td>
+                      <img
+                        src={inventory.uquantity}
+                        alt="Used Quantity"
+                        width={100}
+                        height={75}
+                      />
+                    </td>
                     <td>{inventory.totalPrice}</td>
                     <td>
                       <Link to={`/UpdateProduct/${inventory._id}`}>
@@ -198,7 +219,6 @@ export default function InventoryMnagement() {
                           Edit
                         </button>
                       </Link>
-
                       <button
                         onClick={(e) =>
                           handleDelete(inventory._id, inventory.name)

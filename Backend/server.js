@@ -27,7 +27,7 @@ const salRoutes = require("./routes/salaryRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
 const supMsgRoutes = require("./routes/supMsgRoutes");
 const supplierRoutes = require("./routes/supplierRoutes");
-
+const imageuploadRoutes=require('./routes/ImageUploadRoutes');
 // Routes
 app.use("/api/users", userRoutes);
 app.use("/api/Book", appointmentRoutes);
@@ -43,6 +43,7 @@ app.use("/api/sal", salRoutes);
 app.use("/api/schedu", scheduleRoutes);
 app.use("/api/Msg", supMsgRoutes);
 app.use("/api/Sup", supplierRoutes);
+app.use("/image",imageuploadRoutes);
 
 // Connect to the MongoDB database
 mongoose

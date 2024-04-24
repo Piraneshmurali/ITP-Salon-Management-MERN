@@ -18,12 +18,13 @@ export default function Header() {
         <img src={logo} className="logo-image" />
       </div>
       <div className="header-searchbar">
-        <div className="searchBar">
+        {/* <div className="searchBar">
           <input type="text" placeholder="Search" className="search-input" />
           <button className="search-button">
             <IoSearch className="search-icon" />
           </button>
-        </div>
+        </div> */}
+        <h2>Hello Niron &#128526;, Have A Great Day!!! </h2>
       </div>
       <div className="header-left">
         <div className="header-logout">

@@ -3,7 +3,7 @@ import axios from "axios";
 import "./loginPage.css";
 import { FaUser, FaLock } from "react-icons/fa";
 //import React from 'react'
-import "./loginPage.css";
+
 import close from "./images/close.png";
 import CreateAccount from "./CreateAccount";
 import { Link } from "react-router-dom";
@@ -38,7 +38,7 @@ export default function LoginPage() {
           navigate("/Dashboard"); // Navigate to the Dashboard page
         } else {
           console.log("User login successful:", userData);
-          navigate("/Home"); // Navigate to the Home page
+          navigate("/Hero"); // Navigate to the Hero page
         }
       } else {
         console.error("Login failed:", response.data.message); // Log the error message if login failed

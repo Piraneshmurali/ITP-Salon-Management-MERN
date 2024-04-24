@@ -217,7 +217,7 @@ export default function Dashboard() {
 
   const [inventoryChart, setInventoryChart] = useState({
     options: {
-      colors: ["#2E93fA", "#66DA26", "#546E7A", "#E91E63", "#FF9800"],
+      colors: ["#2E93fA", "#66DA26", "#546E7A", ],
       chart: {
         id: "basic-bar",
       },

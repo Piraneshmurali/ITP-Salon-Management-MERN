@@ -39,6 +39,10 @@ import Contact from './Pages/Contact';
 import About from './Pages/About';
 import Products from './Pages/Products';
 import Gallery from './Pages/Gallery';
+import ProductsView from './Pages/ProductsView';
+import Product from "./Pages/product";
+
+
 
 
 
@@ -54,6 +58,9 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/About" element={<About />} />
         <Route path="/Products" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
+
+        <Route path="/ProductsView" element={<ProductsView/>} />
         <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Dashboard" element={<Dashboard />}></Route>
           <Route

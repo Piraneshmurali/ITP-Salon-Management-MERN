@@ -31,8 +31,11 @@ export default function UpdateProduct() {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleUpdate = (e) => {
-    e.preventDefault();
+  const handleUpdate = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    
+    const imageUrl = await uploadImage(uquantity);
+    
     axios
       .put("http://localhost:8000/api/Product/update/" + id, {
         name,
@@ -40,16 +43,43 @@ export default function UpdateProduct() {
         category,
         date,
         rquantity,
-        uquantity,
+        uquantity: imageUrl,
         totalPrice,
       })
       .then((result) => {
         console.log(result);
+        // Optional: Navigate to another page or perform other actions
         navigate("/InventoryMnagement");
       })
       .catch((err) => console.log(err));
   };
+  
 
+  const uploadImage = async (image) => {
+    try {
+      const formData = new FormData();
+      formData.append("myimage", image);
+      const response = await fetch(
+        "http://localhost:8000/image/uploadimage",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Image uploaded successfully:", data);
+        return data.imageUrl;
+      } else {
+        console.error("Failed to upload the image.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
+    }
+  };
   const navigteBack = () => {
     navigate(-1);
   };
@@ -85,9 +115,9 @@ export default function UpdateProduct() {
               required
             >
               <option value="Not Selected">Select type</option>
-              <option value="Scissors">Scissors</option>
-              <option value="Shampoo">Shampoo</option>
-              <option value="Hair Styling">Hair Styling</option>
+              <option value="Mens">Mens</option>
+              <option value="Womens">Womens</option>
+              <option value="Kids">Kids</option>
               <option value="Hair coloring products">
                 Hair coloring products
               </option>
@@ -135,15 +165,14 @@ export default function UpdateProduct() {
           </div>
 
           <div className="updateProduct-input-box">
-            <input
-              type="text"
+          <input
+              type="file"
               id="uquantity"
               name="uquantity"
-              value={uquantity}
-              onChange={(e) => setUquantity(e.target.value)}
-              required
+              accept="image/*"
+              onChange={(e) => setUquantity(e.target.files[0])}
             />
-            <label htmlFor="uquantity">Used quantity</label>
+            {/* <label htmlFor="uquantity">Used quantity</label> */}
           </div>
 
           <div className="updateProduct-input-box">

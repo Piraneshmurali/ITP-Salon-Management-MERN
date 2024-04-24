@@ -16,6 +16,7 @@ export default function AddProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const imageUrl = await uploadImage(uquantity);
 
     const inventoryData = {
       name,
@@ -23,7 +24,7 @@ export default function AddProduct() {
       category,
       date,
       rquantity,
-      uquantity,
+      uquantity: imageUrl,
       totalPrice,
     };
 
@@ -43,6 +44,32 @@ export default function AddProduct() {
       }
     } catch (error) {
       console.error("Error:", error.message);
+    }
+  };
+
+  const uploadImage = async (image) => {
+    try {
+      const formData = new FormData();
+      formData.append("myimage", image);
+      const response = await fetch(
+        "http://localhost:8000/image/uploadimage",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log("Image uploaded successfully:", data);
+        return data.imageUrl;
+      } else {
+        console.error("Failed to upload the image.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      return null;
     }
   };
 
@@ -131,14 +158,13 @@ export default function AddProduct() {
 
           <div className="addProduct-input-box">
             <input
-              type="text"
+              type="file"
               id="uquantity"
               name="uquantity"
-              value={uquantity}
-              onChange={(e) => setUquantity(e.target.value)}
+              accept="image/*"
+              onChange={(e) => setUquantity(e.target.files[0])}
               required
             />
-            <label htmlFor="uquantity">Used quantity</label>
           </div>
 
           <div className="addProduct-input-box">
