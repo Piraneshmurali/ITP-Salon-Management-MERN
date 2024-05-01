@@ -47,7 +47,7 @@ export default function ProductGrid() {
               alt={product.imageAlt}
             />
           </div>
-          <h3 className="product-name">{product.name}</h3>
+          <h2 className="product-name">{product.name}</h2>
           <p className="product-price">{product.price}</p>
         </a>
       ))}
